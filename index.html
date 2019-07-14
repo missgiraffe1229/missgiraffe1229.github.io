@@ -343,7 +343,54 @@
 <p><img src="3.png" alt></p>
 <h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>所有工具都安装成功后，使用npm来安装hexo。开始菜单-&gt;Git-&gt;Git Bash.</p>
 <p>输入：<code>npm install -g hexo-cli</code>，hexo成功安装。</p>
-<h2 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h2>
+<h2 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h2><h3 id="本地创建文件夹"><a href="#本地创建文件夹" class="headerlink" title="本地创建文件夹"></a>本地创建文件夹</h3><p>在合适的目录下创建文件夹，以后博客需要的所有文件与资源都在这个文件夹中，右键单击文件夹，选择Git Bash Here。</p>
+<p><img src="4.png" alt></p>
+<p>输入：<code>hexo init</code></p>
+<p><img src="5.png" alt></p>
+<p>输入：<code>npm install</code></p>
+<p><img src="6.png" alt></p>
+<p>此时会发现在刚创建的文件夹下出现很多文件。</p>
+<p><img src="7.png" alt></p>
+<h3 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h3><p>此时本地博客使用的是hexo的默认主题lanscape，存储在themes文件夹下。Hexo又很多主题可以选择<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a>，这里以NexT主题为例。</p>
+<p>输入：<code>git clone http://github.com/iissnan/hexo-theme-next themes</code></p>
+<p><img src="8.png" alt></p>
+<p><img src="9.png" alt></p>
+<p>这代表安装成功，接下来我们启用这个主题，在我们最开始创建的文件夹中有一个_config.yml文件（主配置文件），将theme改成next。（推荐用Notepad++打开） </p>
+<p><img src="10.png" alt></p>
+<p>现在理论上，我们本地文件夹所搭建的博客已经使用NexT主题了，下面我们来看看博客的样子。</p>
+<p>输入：<code>hexo clean</code></p>
+<p><img src="11.png" alt></p>
+<p>输入：<code>hexo server</code></p>
+<p><img src="12.png" alt></p>
+<p>输出的意思是在浏览器输入：<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 就可以看到刚刚做好的博客了。</p>
+<p><img src="13.png" alt></p>
+<p>这样，我们本地下的博客就已经确定搭建好啦~如果你想更改一些细节的样式，可以参考NexT的使用手册，也许下一篇也会写我现在博客样式的细节。</p>
+<h2 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h2><p>我们现在看到的博客还是本地使用的，我们需要将它部署到GitHub上。</p>
+<p>首先我们先尝试开始写一篇博客。</p>
+<p>输入：<code>hexo new &quot;Hello Giraffe&quot;</code></p>
+<p><img src="14.png" alt></p>
+<p>可以看到在上述路径中新建了名为Hello Giraffe的md文件，用Typora打开就可以编辑文章了。</p>
+<p><img src="15.png" alt></p>
+<p>文章写完保存后，要在hexo进行操作。</p>
+<p>输入：<code>hexo generate</code></p>
+<p><img src="16.png" alt></p>
+<p>接下来将文件部署到GitHub，首先先安装工具。</p>
+<p>输入：<code>npm install hexo-deployer-git --save</code></p>
+<p><img src="17.png" alt></p>
+<p>安装成功以后在主配置文件_config.yml中搜索deploy，最后一行中更改：</p>
+<p><img src="18.png" alt></p>
+<p>特别要注意的是，冒号后面需要有英文空格，这个地方一定不要出错。这一步可以在以后更新博客时自动上传到GitHub中。</p>
+<p>最后输入：<code>hexo d</code></p>
+<p>此时遇见了一点问题，不能找到我之前写的repo地址，这是因为第一次向这个新的GitHub上传东西，需要用户名和密码。</p>
+<p><img src="19.png" alt></p>
+<p>将主配置文件中的repo地址改成：</p>
+<p><code>http://giraffeMiss:密码@github.com/giraffeMiss/giraffeMiss.github.io.git</code></p>
+<p>这样就成功部署在GitHub上了，以后所有人都可以通过<a href="http://giraffeMiss.github.io" target="_blank" rel="noopener">http://giraffeMiss.github.io</a> 来访问博客了。</p>
+<p>每一次更新博客时需要执行：</p>
+<p><code>hexo clean</code></p>
+<p><code>hexo generate</code></p>
+<p><code>hexo d</code></p>
+
           
         
       
